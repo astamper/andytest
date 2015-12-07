@@ -1,23 +1,26 @@
-<h1>Listing orders</h1>
-
-<table>
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Order %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Shipping address</th>
-      <th>Fufillment date</th>
-      <th>Fufillment time</th>
-      <th>Fufillment status</th>
-      <th>Order amount</th>
-      <th>Order unit</th>
-      <th>Per unit price</th>
-      <th>Crm</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:shipping_address) %></th>
+      <th><%= model_class.human_attribute_name(:fufillment_date) %></th>
+      <th><%= model_class.human_attribute_name(:fufillment_time) %></th>
+      <th><%= model_class.human_attribute_name(:fufillment_status) %></th>
+      <th><%= model_class.human_attribute_name(:order_amount) %></th>
+      <th><%= model_class.human_attribute_name(:order_unit) %></th>
+      <th><%= model_class.human_attribute_name(:per_unit_price) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.id %></td>
         <td><%= order.shipping_address %></td>
         <td><%= order.fufillment_date %></td>
         <td><%= order.fufillment_time %></td>
@@ -25,15 +28,21 @@
         <td><%= order.order_amount %></td>
         <td><%= order.order_unit %></td>
         <td><%= order.per_unit_price %></td>
-        <td><%= order.crm %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l order.created_at, format: :long %></td>
+        <td>
+          <%= link_to order_path(order), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to order_path(order), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_order_path,
+            :class => 'btn btn-primary' %>
