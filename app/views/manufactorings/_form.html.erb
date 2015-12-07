@@ -1,15 +1,34 @@
-<%= simple_form_for(@manufactoring) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :batch_amount %>
-    <%= f.input :batch_unit %>
-    <%= f.input :batch_date %>
-    <%= f.input :batch_status %>
-    <%= f.association :order %>
+<%= form_for @manufactoring, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :batch_amount, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :batch_amount, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :batch_unit, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :batch_unit, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :batch_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :batch_date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :batch_status, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :batch_status, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  manufactorings_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

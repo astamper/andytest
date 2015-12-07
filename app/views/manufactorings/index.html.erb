@@ -1,33 +1,42 @@
-<h1>Listing manufactorings</h1>
-
-<table>
+<%- model_class = Manufactoring -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Manufactoring %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Batch amount</th>
-      <th>Batch unit</th>
-      <th>Batch date</th>
-      <th>Batch status</th>
-      <th>Order</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:batch_amount) %></th>
+      <th><%= model_class.human_attribute_name(:batch_unit) %></th>
+      <th><%= model_class.human_attribute_name(:batch_date) %></th>
+      <th><%= model_class.human_attribute_name(:batch_status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @manufactorings.each do |manufactoring| %>
       <tr>
+        <td><%= manufactoring.id %></td>
         <td><%= manufactoring.batch_amount %></td>
         <td><%= manufactoring.batch_unit %></td>
         <td><%= manufactoring.batch_date %></td>
         <td><%= manufactoring.batch_status %></td>
-        <td><%= manufactoring.order %></td>
-        <td><%= link_to 'Show', manufactoring %></td>
-        <td><%= link_to 'Edit', edit_manufactoring_path(manufactoring) %></td>
-        <td><%= link_to 'Destroy', manufactoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l manufactoring.created_at, format: :long %></td>
+        <td>
+          <%= link_to manufactoring_path(manufactoring), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to manufactoring_path(manufactoring), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Manufactoring', new_manufactoring_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_manufactoring_path,
+            :class => 'btn btn-primary' %>

@@ -1,6 +1,5 @@
-<h1>Editing manufactoring</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @manufactoring %> |
-<%= link_to 'Back', manufactorings_path %>
+<%- model_class = Manufactoring -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Manufactoring %></h1>
+</div>
+<%= render :partial => 'form' %>
