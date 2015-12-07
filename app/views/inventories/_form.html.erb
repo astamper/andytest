@@ -1,0 +1,16 @@
+<%= simple_form_for(@inventory) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :inventory_name %>
+    <%= f.input :inventory_starting_amount %>
+    <%= f.input :inventory_current_amount %>
+    <%= f.input :inventory_unit %>
+    <%= f.input :expiration %>
+    <%= f.input :lead_time_days %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

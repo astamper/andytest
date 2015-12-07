@@ -1,0 +1,35 @@
+<h1>Listing inventories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Inventory name</th>
+      <th>Inventory starting amount</th>
+      <th>Inventory current amount</th>
+      <th>Inventory unit</th>
+      <th>Expiration</th>
+      <th>Lead time days</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%= inventory.inventory_name %></td>
+        <td><%= inventory.inventory_starting_amount %></td>
+        <td><%= inventory.inventory_current_amount %></td>
+        <td><%= inventory.inventory_unit %></td>
+        <td><%= inventory.expiration %></td>
+        <td><%= inventory.lead_time_days %></td>
+        <td><%= link_to 'Show', inventory %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(inventory) %></td>
+        <td><%= link_to 'Destroy', inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory', new_inventory_path %>

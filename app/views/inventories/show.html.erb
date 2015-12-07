@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inventory name:</strong>
+  <%= @inventory.inventory_name %>
+</p>
+
+<p>
+  <strong>Inventory starting amount:</strong>
+  <%= @inventory.inventory_starting_amount %>
+</p>
+
+<p>
+  <strong>Inventory current amount:</strong>
+  <%= @inventory.inventory_current_amount %>
+</p>
+
+<p>
+  <strong>Inventory unit:</strong>
+  <%= @inventory.inventory_unit %>
+</p>
+
+<p>
+  <strong>Expiration:</strong>
+  <%= @inventory.expiration %>
+</p>
+
+<p>
+  <strong>Lead time days:</strong>
+  <%= @inventory.lead_time_days %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
+<%= link_to 'Back', inventories_path %>
