@@ -1,14 +1,28 @@
-<%= simple_form_for(@component) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :component_name %>
-    <%= f.input :component_amount %>
-    <%= f.input :component_unit %>
-    <%= f.association :product %>
+<%= form_for @component, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :component_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :component_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :component_amount, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :component_amount, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :component_unit, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :component_unit, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  components_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

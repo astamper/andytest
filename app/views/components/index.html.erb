@@ -1,31 +1,40 @@
-<h1>Listing components</h1>
-
-<table>
+<%- model_class = Component -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Component %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Component name</th>
-      <th>Component amount</th>
-      <th>Component unit</th>
-      <th>Product</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:component_name) %></th>
+      <th><%= model_class.human_attribute_name(:component_amount) %></th>
+      <th><%= model_class.human_attribute_name(:component_unit) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @components.each do |component| %>
       <tr>
+        <td><%= component.id %></td>
         <td><%= component.component_name %></td>
         <td><%= component.component_amount %></td>
         <td><%= component.component_unit %></td>
-        <td><%= component.product %></td>
-        <td><%= link_to 'Show', component %></td>
-        <td><%= link_to 'Edit', edit_component_path(component) %></td>
-        <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l component.created_at, format: :long %></td>
+        <td>
+          <%= link_to component_path(component), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to component_path(component), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Component', new_component_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_component_path,
+            :class => 'btn btn-primary' %>
