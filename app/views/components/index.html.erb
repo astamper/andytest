@@ -1,0 +1,31 @@
+<h1>Listing components</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component name</th>
+      <th>Component amount</th>
+      <th>Component unit</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @components.each do |component| %>
+      <tr>
+        <td><%= component.component_name %></td>
+        <td><%= component.component_amount %></td>
+        <td><%= component.component_unit %></td>
+        <td><%= component.product %></td>
+        <td><%= link_to 'Show', component %></td>
+        <td><%= link_to 'Edit', edit_component_path(component) %></td>
+        <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Component', new_component_path %>
