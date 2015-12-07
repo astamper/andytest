@@ -1,31 +1,42 @@
-<h1>Listing crms</h1>
-
-<table>
+<%- model_class = Crm -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Crm %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Crm first name</th>
-      <th>Crm last name</th>
-      <th>Crm phone number</th>
-      <th>Crm email</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:crm_first_name) %></th>
+      <th><%= model_class.human_attribute_name(:crm_last_name) %></th>
+      <th><%= model_class.human_attribute_name(:crm_phone_number) %></th>
+      <th><%= model_class.human_attribute_name(:crm_email) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @crms.each do |crm| %>
       <tr>
+        <td><%= crm.id %></td>
         <td><%= crm.crm_first_name %></td>
         <td><%= crm.crm_last_name %></td>
         <td><%= crm.crm_phone_number %></td>
         <td><%= crm.crm_email %></td>
-        <td><%= link_to 'Show', crm %></td>
-        <td><%= link_to 'Edit', edit_crm_path(crm) %></td>
-        <td><%= link_to 'Destroy', crm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l crm.created_at, format: :long %></td>
+        <td>
+          <%= link_to crm_path(crm), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to crm_path(crm), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Crm', new_crm_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_crm_path,
+            :class => 'btn btn-primary' %>

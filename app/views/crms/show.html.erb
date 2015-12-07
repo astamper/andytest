@@ -1,24 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Crm -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Crm %></h1>
+</div>
 
-<p>
-  <strong>Crm first name:</strong>
-  <%= @crm.crm_first_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:crm_first_name) %></dt>
+      <dd><pre class="prettyprint"><%= @crm.crm_first_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:crm_last_name) %></dt>
+      <dd><pre class="prettyprint"><%= @crm.crm_last_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:crm_phone_number) %></dt>
+      <dd><pre class="prettyprint"><%= @crm.crm_phone_number %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:crm_email) %></dt>
+      <dd><pre class="prettyprint"><%= @crm.crm_email %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Crm last name:</strong>
-  <%= @crm.crm_last_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              crms_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_crm_path(@crm), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              crm_path(@crm),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Crm phone number:</strong>
-  <%= @crm.crm_phone_number %>
-</p>
-
-<p>
-  <strong>Crm email:</strong>
-  <%= @crm.crm_email %>
-</p>
-
-<%= link_to 'Edit', edit_crm_path(@crm) %> |
-<%= link_to 'Back', crms_path %>
