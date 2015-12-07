@@ -1,0 +1,14 @@
+<%= simple_form_for(@crm) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :crm_first_name %>
+    <%= f.input :crm_last_name %>
+    <%= f.input :crm_phone_number %>
+    <%= f.input :crm_email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
