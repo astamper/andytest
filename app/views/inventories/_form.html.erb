@@ -1,16 +1,46 @@
-<%= simple_form_for(@inventory) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :inventory_name %>
-    <%= f.input :inventory_starting_amount %>
-    <%= f.input :inventory_current_amount %>
-    <%= f.input :inventory_unit %>
-    <%= f.input :expiration %>
-    <%= f.input :lead_time_days %>
+<%= form_for @inventory, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :inventory_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :inventory_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :inventory_starting_amount, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :inventory_starting_amount, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :inventory_current_amount, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :inventory_current_amount, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :inventory_unit, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :inventory_unit, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :expiration, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :expiration, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :lead_time_days, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :lead_time_days, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  inventories_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
