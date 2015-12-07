@@ -1,0 +1,33 @@
+<h1>Listing manufactorings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Batch amount</th>
+      <th>Batch unit</th>
+      <th>Batch date</th>
+      <th>Batch status</th>
+      <th>Order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manufactorings.each do |manufactoring| %>
+      <tr>
+        <td><%= manufactoring.batch_amount %></td>
+        <td><%= manufactoring.batch_unit %></td>
+        <td><%= manufactoring.batch_date %></td>
+        <td><%= manufactoring.batch_status %></td>
+        <td><%= manufactoring.order %></td>
+        <td><%= link_to 'Show', manufactoring %></td>
+        <td><%= link_to 'Edit', edit_manufactoring_path(manufactoring) %></td>
+        <td><%= link_to 'Destroy', manufactoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Manufactoring', new_manufactoring_path %>

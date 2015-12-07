@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Batch amount:</strong>
+  <%= @manufactoring.batch_amount %>
+</p>
+
+<p>
+  <strong>Batch unit:</strong>
+  <%= @manufactoring.batch_unit %>
+</p>
+
+<p>
+  <strong>Batch date:</strong>
+  <%= @manufactoring.batch_date %>
+</p>
+
+<p>
+  <strong>Batch status:</strong>
+  <%= @manufactoring.batch_status %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @manufactoring.order %>
+</p>
+
+<%= link_to 'Edit', edit_manufactoring_path(@manufactoring) %> |
+<%= link_to 'Back', manufactorings_path %>

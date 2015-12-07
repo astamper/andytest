@@ -1,0 +1,2 @@
+module ManufactoringsHelper
+end
