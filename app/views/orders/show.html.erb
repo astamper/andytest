@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shipping address:</strong>
+  <%= @order.shipping_address %>
+</p>
+
+<p>
+  <strong>Fufillment date:</strong>
+  <%= @order.fufillment_date %>
+</p>
+
+<p>
+  <strong>Fufillment time:</strong>
+  <%= @order.fufillment_time %>
+</p>
+
+<p>
+  <strong>Fufillment status:</strong>
+  <%= @order.fufillment_status %>
+</p>
+
+<p>
+  <strong>Order amount:</strong>
+  <%= @order.order_amount %>
+</p>
+
+<p>
+  <strong>Order unit:</strong>
+  <%= @order.order_unit %>
+</p>
+
+<p>
+  <strong>Per unit price:</strong>
+  <%= @order.per_unit_price %>
+</p>
+
+<p>
+  <strong>Crm:</strong>
+  <%= @order.crm %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

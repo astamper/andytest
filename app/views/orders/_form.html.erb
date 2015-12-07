@@ -1,0 +1,18 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :shipping_address %>
+    <%= f.input :fufillment_date %>
+    <%= f.input :fufillment_time %>
+    <%= f.input :fufillment_status %>
+    <%= f.input :order_amount %>
+    <%= f.input :order_unit %>
+    <%= f.input :per_unit_price %>
+    <%= f.association :crm %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
